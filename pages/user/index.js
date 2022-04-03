@@ -14,11 +14,11 @@ const UserIndex = () =>{
         <h1  className="pt-5 text-center text-success">User DashBoard</h1> 
         <div className="text-center ">
         
-        <pre>Name : {user.user.name}</pre>
+        {/* <pre>Name : {user.user.name}</pre>
         <pre>Email : {user.user.email}</pre>
         <pre>Mobile : {user.user.mobile}</pre>
         <pre>Institute : {user.user.institute}</pre>
-        <pre>Branch : {user.user.branch}</pre>
+        <pre>Branch : {user.user.branch}</pre> */}
         </div>
         
         
