@@ -7,7 +7,8 @@ import UserRoute from "../../components/routes/UserRoute";
 //User Route --> USER NAV--> AND WE ARE PASSING CHILDREN FOR USER ROUTE
 const UserIndex = () =>{
     const {state:user}=useContext(Context);
-    // console.log(user.user.name)
+    // console.log(user.user.name)xvnxvn
+   
 
     return (
         <>
@@ -15,11 +16,8 @@ const UserIndex = () =>{
        
         {user !== null && 
          <div className="text-center ">
-        <pre>Name : {user.user.name}</pre>
-        <pre>Email : {user.user.email}</pre>
-        <pre>Mobile : {user.user.mobile}</pre>
-        <pre>Institute : {user.user.institute}</pre>
-        <pre>Branch : {user.user.branch}</pre>
+      
+        
         </div>
              }
         
