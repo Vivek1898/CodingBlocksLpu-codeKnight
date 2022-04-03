@@ -29,7 +29,7 @@ useEffect(() => {
    try{
      setLoading(true);
      //If there any api exist server will target backend through proxy
-    const {data}=await axios.post("https://vast-mesa-19498.herokuapp.com/api",{
+    const {data}=await axios.post("https://vast-mesa-19498.herokuapp.com/api/register",{
       name,
       email,
       password,
