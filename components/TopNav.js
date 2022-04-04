@@ -50,7 +50,7 @@ Router.push("/login");
       onClick={(e)=>setCurrent(e.key)}
        icon={<AppstoreOutlined />}>
         <Link href="/">
-          <a>App</a>
+          <a>Home</a>
         </Link>
       </Item>
 
@@ -62,7 +62,7 @@ Router.push("/login");
   
   >
    <Link href="/student/code">
-     <a>Start</a>
+     <a>Start Code</a>
    </Link>
  </Item>
 ) }
@@ -111,7 +111,7 @@ Router.push("/login");
        onClick={(e)=>setCurrent(e.key)}
        icon={<UserAddOutlined />}>
         <Link href="/user">
-          <a>Dashboard</a>
+          <a>Profile</a>
         </Link>
       </Item>
 

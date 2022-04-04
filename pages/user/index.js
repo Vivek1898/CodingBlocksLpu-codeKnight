@@ -6,8 +6,9 @@ import UserRoute from "../../components/routes/UserRoute";
 //Protected Route
 //User Route --> USER NAV--> AND WE ARE PASSING CHILDREN FOR USER ROUTE
 const UserIndex = () =>{
-    const {state:user}=useContext(Context);
-    // console.log(user.user.name)xvnxvn
+    const {state}=useContext(Context);
+    const{user} =state;
+    // console.log(user.user.name)
    
 
     return (
@@ -16,7 +17,12 @@ const UserIndex = () =>{
        
         {user !== null && 
          <div className="text-center ">
-      
+        <pre>Name :{user.name}</pre>
+        <pre>Email : {user.email}</pre>
+        <pre>Institute : {user.institute}</pre>
+        <pre>Branch : {user.branch}</pre>
+        <pre>Mobile :{user.mobile}</pre>
+
         
         </div>
              }
