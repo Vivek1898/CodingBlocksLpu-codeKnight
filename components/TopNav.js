@@ -90,6 +90,20 @@ Router.push("/login");
 
         </>
       )}
+
+
+{user && user.role && user.role.includes("Instructor") && (
+  <Item key="/admin/user" 
+  onClick={(e)=>setCurrent(e.key)}
+  icon={<TeamOutlined />}
+  className="float-left"
+  
+  >
+   <Link href="/admin/user">
+     <a>Admin</a>
+   </Link>
+ </Item>
+) }
         
       {user !== null  &&
       
