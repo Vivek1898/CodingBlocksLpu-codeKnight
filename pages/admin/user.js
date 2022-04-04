@@ -16,13 +16,13 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 const Code = () =>{
-    const[countries,setCountries]=useState([]);
-    function getCountries(){
-        // https://restcountries.com/v3.1/all
+    const[students,setStudents]=useState([]);
+    function getstudents(){
+        // https://reststudents.com/v3.1/all
        
     axios.get("https://vast-mesa-19498.herokuapp.com/employees").then((sucess) =>{
-     setCountries(sucess.data);
-     console.log(sucess.data)
+     setStudents(sucess.data);
+    // console.log(sucess.data)
      
  
     },(err)=>{
@@ -42,7 +42,7 @@ const Code = () =>{
         
         <div  className=" pt-1 text-center text-success">
     <h1 className="pt-5 text-center text-success">All User Details</h1>
-   <Button onClick={getCountries}> Get Data </Button>
+   <Button onClick={getstudents}> Get Data </Button>
    <table className="table">
    <thead>
     <tr>
@@ -55,7 +55,7 @@ const Code = () =>{
     </tr>
   </thead>
   <tbody>
-  {countries.map((data,index) => (
+  {students.map((data,index) => (
                         
                         <tr>
                              <td>
