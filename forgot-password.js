@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("https://vast-mesa-19498.herokuapp.com/api/forgot-password", { email });
+      const { data } = await axios.post("http://localhost:8000/api/forgot-password", { email });
       setSuccess(true);
       toast("Check your email for the secret code");
       setLoading(false);
@@ -47,7 +47,7 @@ const ForgotPassword = () => {
     // return;
     try {
       setLoading(true);
-      const { data } = await axios.post("https://vast-mesa-19498.herokuapp.com/api/reset-password", {
+      const { data } = await axios.post("http://localhost:8000/api/reset-password", {
         email,
         code,
         newPassword,
