@@ -21,11 +21,11 @@ const Login = () => {
   const router = useRouter();
 
   useEffect(() => {
-<<<<<<< HEAD
+
     if (user !== null) router.push("/student/code");
-=======
+
     if (user !== null) router.push("/");
->>>>>>> 1d231de3a872959596f4209407a64c570ac2042a
+
   }, [user])
 
 
