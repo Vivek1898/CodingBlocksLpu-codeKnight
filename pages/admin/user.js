@@ -1,8 +1,10 @@
 
 
-import {useContext, useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Context } from "../../context";
+import { Table } from 'antd';
 import Link from "next/link";
+import { Row, Col } from 'antd';
 
 
 import {
@@ -11,111 +13,140 @@ import {
   LoadingOutlined,
 } from "@ant-design/icons";
 import { toast } from "react-toastify";
+import { Spin } from 'antd';
 import { Button } from "antd";
 import Text from "antd/lib/typography/Text";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { Layout } from 'antd';
+import { CSVLink, CSVDownload } from "react-csv";
 
-const Code = () =>{
 
 
-    const[students,setStudents]=useState([]);
 
-    function getstudents(){
-        // https://reststudents.com/v3.1/all
-       
-    axios.get("https://vast-mesa-19498.herokuapp.com/employees").then((sucess) =>{
-     setStudents(sucess.data);
-    // console.log(sucess.data)
-     
- 
-    },(err)=>{
-        console.log(err)
+
+const Code = () => {
+  const [students, setStudents] = useState([]);
+  const [columns, setColums] = useState([]);
+  const [data, setData] = useState([]);
+  const { Header, Footer, Sider, Content } = Layout;
+  const [loading, setLoading] = useState(false);
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+  function getstudents() {
+    // https://reststudents.com/v3.1/all
+    setLoading(true);
+    axios.get("https://vast-mesa-19498.herokuapp.com/employees").then((sucess) => {
+      setStudents(sucess.data);
+      setLoading(false);
+
+
+    }, (err) => {
+      console.log(err)
     })
-     }
+  }
 
-    const {state}=useContext(Context);
-    const{user} =state;
-    const router=useRouter();
-    useEffect(() => {
-        if(user=== null) router.push("/login");
-       }, [user])
-    return (
+  const { state } = useContext(Context);
+  const { user } = state;
+  const router = useRouter();
+  useEffect(() => {
+    if (user === null) router.push("/login");
+  }, [user])
+
+  useEffect(() => {
+    if (students.length > 0) {
+      setColums([
+        {
+          title: 'Index',
+          dataIndex: 'index',
+          key: 'index',
+        },
+        {
+          title: 'Name',
+          dataIndex: 'name',
+          key: 'name',
+        },
+        {
+          title: 'Email',
+          dataIndex: 'email',
+          key: 'email',
+        },
+        {
+          title: 'Institute',
+          dataIndex: 'institute',
+          key: 'institute',
+        },
+        {
+          title: 'Branch',
+          dataIndex: 'branch',
+          key: 'branch',
+        },
+        {
+          title: 'Mobile',
+          dataIndex: 'mobile',
+          key: 'mobile',
+        }
+      ])
+      let keyIndex = 0;
+      const sdata = students.map((data, index) => {
+        keyIndex++;
+        return {
+          key: keyIndex,
+          index: index + 1,
+          name: data.name,
+          email: data.email,
+          institute: data.institute,
+          branch: data.branch,
+          mobile: data.mobile,
+        }
+      });
+
+      setData(sdata);
+    }
+  }, [students])
+  return (
+    <>
+      {user !== null && user.role.includes("Instructor") &&
         <>
-         {user !== null && user.role.includes("Instructor")  &&
-        
-        <div  className=" pt-1 text-center text-success">
-    <h1 className="pt-5 text-center text-success">All User Details</h1>
-   <Button onClick={getstudents}> Get Data </Button>
-
-   <table className="table">
-   <thead>
-    <tr key="Head">
-    <th>Index</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Institute</th>
-      <th>Branch</th>
-      <th>Mobile</th>
-    </tr>
-  </thead>
-  <tbody>
-  {students.map((data,index) => (
-                        
-                        <tr key={index+2}>
-                             <td>
-                            {index+1}
-                            </td>
-
-                            <td>{data.name}</td>
-                            <td>{data.email}</td>
-                            <td>{data.institute}</td>
-                            <td>{data.branch}</td>
-                            <td>{data.mobile}</td>
-                          
-                        </tr>
-
-                    ))}
-
-  </tbody>
-
-</table>
-
-   
-        
-        </div>
-}
+          <h1 className="pt-5 text-center">All User Details</h1>
+          <Row justify="space-around">
+            <Col className='gutter-row' span={6}><Button style={{ width: '100%' }} loading={loading ? true : false} type="primary" size="large" onClick={getstudents}> {students.length === 0 ? 'Get Data' : 'Refresh'} </Button></Col>
+            {students.length > 0 && <Col span={6}><Button style={{ width: '100%' }} className="text-center" type='primary' size="large"><CSVLink data={data}>Download</CSVLink></Button></Col>}
+          </Row>
+          <br />
+          {loading && <Spin indicator={antIcon} tip={'Loading...'}><Table columns={columns} dataSource={data} /> </Spin>}
+          {!loading && <Table pagination={false} columns={columns} dataSource={data} scroll={{ y: 400 }} />}
+          <br />
+        </>
+      }
 
 
 
 
-{user === null && 
-        
+      {user === null &&
+
         <div className="text-center ">
-            <h1  className="pt-5 text-center text-success">Please Login</h1> 
-            <p className="text-center pt-3">
-           
-       <Button
-       className="mb-3"
-       type="danger"
-       size="large"
-       icon={<SettingOutlined />}
-       >
-       <Link href="/login">
-      
-            <a className="text-clr" type="sucess" >Login</a>
-            </Link>  
-       </Button>
+          <h1 className="pt-5 text-center text-success">Please Login</h1>
+          <p className="text-center pt-3">
 
+            <Button
+              className="mb-3"
+              type="danger"
+              size="large"
+              icon={<SettingOutlined />}
+            >
+              <Link href="/login">
 
- 
+                <a className="text-clr" type="sucess" >Login</a>
+              </Link>
+            </Button>
+
 
           </p>
-         
-       </div>
-            }
-        </>
-    )
-  };
-  
-  export default Code;
+
+        </div>
+      }
+    </>
+  )
+};
+
+export default Code;

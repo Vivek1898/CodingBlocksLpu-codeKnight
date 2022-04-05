@@ -2,9 +2,30 @@
   border-radius: 0px;
  
 }
+body{
+  background-image: url('../background3.svg');
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .jumbotron {
   background-image: linear-gradient(to right, #007bff, #000);
   color: #fff;
   padding: 80px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.pointer2{
+  cursor: pointer;
 }
