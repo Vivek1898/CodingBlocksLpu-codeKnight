@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 
   // redirect if user is logged in
   useEffect(() => {
-    
+
     if (user !== null) router.push("/");
   }, [user]);
 
@@ -66,7 +66,7 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <h1 className="pt-5 text-center text-success">
+      <h1 className="pt-5 text-center">
         Forgot Password
       </h1>
 
@@ -101,16 +101,16 @@ const ForgotPassword = () => {
               />
               <h6 className="text-primary">Also Check Spam For email </h6>
             </>
-           
+
           )}
 
-          <button
-            type="submit"
+          <Button
+            type="primary"
             className="btn btn-primary btn-block p-2"
             disabled={loading || !email}
           >
             {loading ? <SyncOutlined spin /> : "Submit"}
-          </button>
+          </Button>
         </form>
       </div>
     </>
