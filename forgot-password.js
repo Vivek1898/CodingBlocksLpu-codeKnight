@@ -2,12 +2,9 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncOutlined } from "@ant-design/icons";
-import { UserOutlined, LockOutlined, IdcardOutlined } from '@ant-design/icons';
 import Link from "next/link";
 import { Context } from "../context";
 import { useRouter } from "next/router";
-import { Input } from 'antd';
-import { Button } from 'antd';
 
 const ForgotPassword = () => {
   // state
@@ -34,7 +31,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("https://vast-mesa-19498.herokuapp.com/api/forgot-password", { email });
+      const { data } = await axios.post("http://localhost:8000/api/forgot-password", { email });
       setSuccess(true);
       toast("Check your email for the secret code");
       setLoading(false);
@@ -50,7 +47,7 @@ const ForgotPassword = () => {
     // return;
     try {
       setLoading(true);
-      const { data } = await axios.post("https://vast-mesa-19498.herokuapp.com/api/reset-password", {
+      const { data } = await axios.post("http://localhost:8000/api/reset-password", {
         email,
         code,
         newPassword,
@@ -75,34 +72,31 @@ const ForgotPassword = () => {
 
       <div className="container col-md-4 offset-md-4 pb-5">
         <form onSubmit={success ? handleResetPassword : handleSubmit}>
-          <Input
+          <input
             type="email"
-            className="form-control mb-4 p-3"
+            className="form-control mb-4 p-4"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
-            prefix={<UserOutlined />}
             required
           />
           {success && (
             <>
-              <Input
+              <input
                 type="text"
-                className="form-control mb-4 p-3"
+                className="form-control mb-4 p-4"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="Enter secret code"
-                prefix={<IdcardOutlined />}
                 required
               />
 
-              <Input.Password
+              <input
                 type="password"
-                className="form-control mb-4 p-3"
+                className="form-control mb-4 p-4"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="New Password"
-                prefix={<LockOutlined />}
                 required
               />
               <h6 className="text-primary">Also Check Spam For email </h6>
@@ -112,7 +106,7 @@ const ForgotPassword = () => {
 
           <Button
             type="primary"
-            htmlType="submit" style={{ width: '100%' }} shape="round" size="large"
+            className="btn btn-primary btn-block p-2"
             disabled={loading || !email}
           >
             {loading ? <SyncOutlined spin /> : "Submit"}
