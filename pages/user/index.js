@@ -34,21 +34,23 @@ const UserIndex = () => {
 
                 <div className="text-center ">
                     <h1 className="pt-5 text-center">User DashBoard</h1>
-                    <div class="containerr">
-                        <div class="cardd">
-                            <div class="pic-containerr">
-                                <img class="picc" src="https://source.unsplash.com/random/900%C3%97700/?avatar" alt="Profile Picture" />
+                    <div className="containerr">
+                        <div className="cardd">
+                            <div className="pic-containerr">
+                                <img className="picc" src="https://source.unsplash.com/random/900%C3%97700/?avatar" alt="Profile Picture" />
                             </div>
-                            <div class="namee">
+                            <div className="namee text-danger">
                                 <span>{user.name.toUpperCase()}</span>
                             </div>
-                            <div class="titlee">
+                            {user.branch && user.institute &&
+                            <div className="titlee">
                                 <span>{`${user.institute} (${user.branch.toUpperCase()})`}</span>
                             </div>
-                            <div class="titlee">
+                            }
+                            <div className="titlee">
                                 <span>{user.email}</span>
                             </div>
-                            <div class="descriptionn">
+                            <div className="text-success">
                                 <p>{`Contact Number: ${user.mobile}`}</p>
                             </div>
                         </div>
