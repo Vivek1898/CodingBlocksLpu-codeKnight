@@ -25,7 +25,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+<<<<<<< HEAD
 }
 .pointer2{
   cursor: pointer;
+=======
+>>>>>>> 1d231de3a872959596f4209407a64c570ac2042a
 }
