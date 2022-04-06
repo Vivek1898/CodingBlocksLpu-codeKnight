@@ -31,6 +31,7 @@ const Code = () => {
   const [data, setData] = useState([]);
   const { Header, Footer, Sider, Content } = Layout;
   const [loading, setLoading] = useState(false);
+  const [length, setLength] = useState("");
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   function getstudents() {
     // https://reststudents.com/v3.1/all
@@ -38,6 +39,7 @@ const Code = () => {
     
     axios.get(`${process.env.NEXT_PUBLIC_ADMIN_USER}/employees`).then((sucess) => {
       setStudents(sucess.data);
+      setLength("Total Students :  " + sucess.data.length)
       setLoading(false);
 
 
@@ -109,9 +111,11 @@ const Code = () => {
       {user !== null && user.role.includes("Instructor") &&
         <>
           <h1 className="pt-5 text-center">All User Details</h1>
+         <h4 className="text-center text-success"> {length}</h4>
           <Row justify="space-around">
             <Col className='gutter-row' span={6}><Button style={{ width: '100%' }} loading={loading ? true : false} type="primary" size="large" onClick={getstudents}> {students.length === 0 ? 'Get Data' : 'Refresh'} </Button></Col>
             {students.length > 0 && <Col span={6}><Button style={{ width: '100%' }} className="text-center" type='primary' size="large"><CSVLink data={data}>Download</CSVLink></Button></Col>}
+            
           </Row>
           <br />
           {loading && <Spin indicator={antIcon} tip={'Loading...'}><Table columns={columns} dataSource={data} /> </Spin>}
