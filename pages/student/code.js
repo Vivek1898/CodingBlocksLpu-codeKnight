@@ -38,34 +38,34 @@ const Code = () => {
                         <div className="logoimg">
                             <img src="https://raw.githubusercontent.com/akshat881/codingN/main/jet.png" />
                         </div>
-                        <div class="wrapper">
-                            <div class="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
-                                <h3 class="card-title">DAY 1</h3>
-                                <button class="card-btn">START CODING</button>
+                        <div className="wrapper">
+                            <div className="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
+                                <h3 className="card-title">DAY 1</h3>
+                                <button className="card-btn">START CODING</button>
                             </div>
-                            <div class="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
-                                <h3 class="card-title">DAY 2</h3>
-                                <button class="card-btn">START CODING</button>
+                            <div className="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
+                                <h3 className="card-title">DAY 2</h3>
+                                <button className="card-btn">START CODING</button>
                             </div>
-                            <div class="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
-                                <h3 class="card-title">DAY 3</h3>
-                                <button class="card-btn">START CODING</button>
+                            <div className="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
+                                <h3 className="card-title">DAY 3</h3>
+                                <button className="card-btn">START CODING</button>
                             </div>
-                            <div class="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
-                                <h3 class="card-title">DAY 4</h3>
-                                <button class="card-btn">START CODING</button>
+                            <div className="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
+                                <h3 className="card-title">DAY 4</h3>
+                                <button className="card-btn">START CODING</button>
                             </div>
-                            <div class="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
-                                <h3 class="card-title">DAY 5</h3>
-                                <button class="card-btn">START CODING</button>
+                            <div className="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
+                                <h3 className="card-title">DAY 5</h3>
+                                <button className="card-btn">START CODING</button>
                             </div>
-                            <div class="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
-                                <h3 class="card-title">DAY 6</h3>
-                                <button class="card-btn">START CODING</button>
+                            <div className="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
+                                <h3 className="card-title">DAY 6</h3>
+                                <button className="card-btn">START CODING</button>
                             </div>
-                            <div class="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
-                                <h3 class="card-title">DAY 7</h3>
-                                <button class="card-btn">START CODING</button>
+                            <div className="card" style={{ backgroundColor: bgcolor[randomInteger()] }}>
+                                <h3 className="card-title">DAY 7</h3>
+                                <button className="card-btn">START CODING</button>
                             </div>
 
                         </div>

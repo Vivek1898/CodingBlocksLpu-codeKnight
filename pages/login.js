@@ -19,7 +19,7 @@ const Login = () => {
   const { user } = state;
   //router
   const router = useRouter();
-
+  // console.log(process.env.NEXT_PUBLIC_API);
   useEffect(() => {
 
     if (user !== null) router.push("/student/code");
@@ -36,7 +36,7 @@ const Login = () => {
     try {
       setLoading(true);
       //If there any api exist server will target backend through proxy
-      const { data } = await axios.post(`https://vast-mesa-19498.herokuapp.com/api/login`, {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/login`, {
 
         email,
         password

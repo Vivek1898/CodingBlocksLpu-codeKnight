@@ -38,7 +38,7 @@ const TopNav = () => {
   const logout = async () => {
     dispatch({ type: "LOGOUT" });
     window.localStorage.removeItem("user");
-    const { data } = await axios.get("https://vast-mesa-19498.herokuapp.com/api/logout");
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/logout`);
     toast(data.message);
     Router.push("/login");
   }

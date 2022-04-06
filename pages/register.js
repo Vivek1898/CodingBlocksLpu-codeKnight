@@ -31,7 +31,7 @@ const Register = () => {
     try {
       setLoading(true);
       //If there any api exist server will target backend through proxy
-      const { data } = await axios.post("https://vast-mesa-19498.herokuapp.com/api/register", {
+      const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API}/register`, {
         name,
         email,
         password,

@@ -35,7 +35,8 @@ const Code = () => {
   function getstudents() {
     // https://reststudents.com/v3.1/all
     setLoading(true);
-    axios.get("https://vast-mesa-19498.herokuapp.com/employees").then((sucess) => {
+    
+    axios.get(`${process.env.NEXT_PUBLIC_ADMIN_USER}/employees`).then((sucess) => {
       setStudents(sucess.data);
       setLoading(false);
 
